@@ -23,3 +23,6 @@ git reset soft HEAD^-commit한것만 되돌리기
  *)HEAD 가장 최근 버전에서
    ^ 하나 되돌리자
    ^^ 두개, ^^^세개 
+git branch -현재 브렌치 확인, 브랜치 목록확인
+git branch 브랜치명 -브랜치만들기
+git checkout 브랜치명 -해당 브랜치로 접속
