@@ -1,0 +1,6 @@
+java version 11 설치
+intellj J 설치
+start.spring.io(웹사이트) 접속 후 gradle, java, 버전, group, Artifact 설정 후 Generate 누르고 zip파일 받기
+
+intelliJ 실행해서 오픈 후 받은 zip파일 압축 푼 경로에 가서 build.gradle 누르고 open project 
+intelliJ 의 Setting에 들어가서 gradle 검색 후 build and run using, Run tests using 을 intelliJ IDEA로 바꿔준다.
