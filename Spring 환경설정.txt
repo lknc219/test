@@ -1,6 +1,39 @@
 java version 11 설치
 intellj J 설치
-start.spring.io(웹사이트) 접속 후 gradle, java, 버전, group, Artifact 설정 후 Generate 누르고 zip파일 받기
+
+start.spring.io(웹사이트) 접속 후 gradle, java, 버전, group, Artifact 설정
+Add Dependencies 로 Spring Web, Thymeleaf 추가 
+Generate 누르고 zip파일 받기
 
 intelliJ 실행해서 오픈 후 받은 zip파일 압축 푼 경로에 가서 build.gradle 누르고 open project 
 intelliJ 의 Setting에 들어가서 gradle 검색 후 build and run using, Run tests using 을 intelliJ IDEA로 바꿔준다.
+
+controller로 요청이 왔을때 
+mapping 이 되어있는지 검사 (ViewResolver가 알아서)
+ -되어이있으면 해당 template 실행
+ -되어있지 않으면 static 에서 해당 파일 있는지 찾아서 실행
+
+@Responsebody 가 있으면 ViewResolver 대신 HttpMessageConverter 가 String으로 왔는지 객체로 왔는지 검사
+ -String 으로 왔을 시 StringMessageConverter 가 변환해서 String 으로 넘겨주고
+ -객체로 왔을 시 MappingJackson2HttpMessageConverter(SpringBoot에서 선택한 객체-json으로 바꿔주는 라이브러리) 가 Json구조로 변환해서 넘겨준다.
+
+회원 도메인과 리포지토리 만들기(DB대신 만들어줌 아직 강의에서 DB설정을 안해줬기때문에 테스트 불가) 
+controller 패키지 있는 곳에 domain 만들어 준 후 Member 생성(VO)
+마찬가지로 같은 패키지에  repository 생성 후 DB작업에 필요한 생성 검색 기능을 만들어줌
+
+테스트 케이스 작성 시
+Junit 이용하고 프로젝트 생성 시 자동으로 만들어준 test 패키지에 테스트하고싶은 메소드Test.java 파일을 만들어준다.
+테스트class안에 테스트를 진행할 class의 객체를 생성해주고 테스트를 진행해야할 메소드별로 같은 이름의 메소드를 만들어주어 그 안에 테스트 로직을 작성한다.
+  *) assertj assertions 클래스 활용
+     assertThat(기준대상).isEqualsTo(비교대상); 으로 진행하면 
+메소드 단위 테스트를 실행 할 수 있으며, 클래스 단위로도 실행 할 수 있다.
+클래스단위로 실행 시 각 메소드별 순서는 정할 수 없고 순서에 따라 테스트 결과가 다르면 안됨(순서에 따른 의존도 존재하면 안된다.)
+때문에 테스트 강의에서는 테스트 진행 할 class에 map을 클리어해주는 메소드를 넣고, 
+  테스트가 끌날때마다 반복적으로 실행해줄 메소드 설정
+  @AfterEach 에너테이션 설정후
+  public void 메서드명(){
+      테스트진행class.map클리어메소드();
+  }
+을 해준 후 클래스 단위로 테스트를 진행한다면 순서에 상관없이 모두 테스트를 성공적으로 마칠 수 있다.
+
+이 예제에서는 repository 라는 클래스를 만들고 나서 Test Case를 작성했지만 반대로 TestCase를 먼저 작성할 수도 있다. (TTD - 테스트 주도 개발)
