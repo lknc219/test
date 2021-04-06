@@ -1,0 +1,20 @@
+JPA를 사용하면
+기존의 반복코드는 물론이고, 기본적인 SQL도 JPA가 직접 만들어서 실행해준다.
+SQL과 데이터 중심의 설계에서 객체 중심의 설계로 패러다임을 전환할 수 있다.
+개발 생산성을 크게 높일 수 있다.
+
+build.gredle 
+implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+ -이걸로 jpa와 hibernate 라이브러리가 들어와야함.
+
+application.properties 
+spring.jpa.show-sql=true  // jpa가날리는 sql을 볼수있다.
+spring.jpa.hibernate.ddl-auto=none //객체(domain)를보고 테이블도 다 만들기 때문에 none으로 설정(이미 테이블 생성이 끝난 시점에 진행한 내용)
+spring.jpa.hibernate.ddl-auto=create // create table 까지 자동으로 만듦
+
+jpa는 인터페이스다.
+jpa의 구현체로 hibernate 를 쓴다고 생각하면 된다.
+
+ORM
+Object Relational Mapping
+어노테이션으로 객체와 릴레이셔널 데이터베이스의 테이블을 맵핑해준다. 
