@@ -15,6 +15,8 @@ spring.jpa.hibernate.ddl-auto=create // create table 까지 자동으로 만듦
 jpa는 인터페이스다.
 jpa의 구현체로 hibernate 를 쓴다고 생각하면 된다.
 
+jpa를 사용하려면 Service단의 class선언부나, 메서드 선언부에 @Transactional을 입력해주어 트랜잭션 처리를 해야함.
+
 ORM
 Object Relational Mapping
 어노테이션으로 객체와 릴레이셔널 데이터베이스의 테이블을 맵핑해준다. 
